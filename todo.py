@@ -2,6 +2,7 @@ import os
 import argparse
 from functools import wraps
 import readline
+from dateutil.parser import parse
 
 # settings
 DEFAULT_FILE_NAME = "todo.txt"
@@ -32,6 +33,14 @@ def rlinput(prompt, prefill=''):
       return input(prompt)  # or raw_input in Python 2
    finally:
       readline.set_startup_hook()
+
+def is_date(string, fuzzy=False):
+    try: 
+        parse(string, fuzzy=fuzzy)
+        return True
+
+    except ValueError:
+        return False
 
 def setup_args():
   global parser
@@ -153,10 +162,33 @@ def write_tasks(tasks):
       cf.write(tasks[i] + newline)
 
 def print_task(task, i=None):
+  words =  task.split(' ')
+  for j in range(0, len(words)):
+    word = words[j]
+    if word[0] == '+':
+      words[j] = f'{bcolors.WARNING}{word}{bcolors.ENDC}'
+
+    if word[0] == '@':
+      words[j] = f'{bcolors.OKCYAN}{word}{bcolors.ENDC}'
+
+    if word == 'x':
+      words[j] = f'{bcolors.OKGREEN}{word}{bcolors.ENDC}'
+
+    if is_date(word):
+      words[j] = f'{bcolors.WARNING}{word}{bcolors.ENDC}'
+
+    if word[0] == '(' and word[-1] == ')' and len(word) == 3 and j == 0:
+      words[j] = f'{bcolors.OKCYAN}{word}{bcolors.ENDC}'
+
+
+
+  coloredtask = ' '.join(words)
+  istring = ""
   if i is not None:
-    print(f"[{i}]\t{bcolors.BOLD}{task}{bcolors.ENDC}")
-  else:
-    print(f"{bcolors.BOLD}{task}{bcolors.ENDC}")
+    istring = f"[{i}]\t"
+  
+  print(f"{istring}{coloredtask}")
+  
 
 @catch_task_errors
 def edit(task_num):
