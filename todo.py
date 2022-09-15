@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import argparse
 from functools import wraps
@@ -285,8 +286,6 @@ def main():
   global project_filter
   global context_filter
   
-  # sort the files before proceeding
-  sort()
 
   # setup argument parser
   setup_args()
@@ -295,6 +294,9 @@ def main():
   # create file if it doesn't exist
   # and update the current_filename variable
   setup_file(args.file)
+  
+  # sort the files before proceeding
+  sort()
 
   # add project filters
   project_filter = args.project
