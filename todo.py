@@ -12,6 +12,7 @@ current_filename = DEFAULT_FILE_NAME
 
 # filter vars
 project_filter = None
+context_filter = None
 
 # terminal colors
 class bcolors:
@@ -184,24 +185,42 @@ def edit(task_num):
 def ls():
   sort()
   tasks = get_tasks()
+  print()
   print(header('TASK LIST'))
 
   if len(tasks[0]) > 0:
     done_header_printed = False
+    filtered = []
+
     for i in range(0, len(tasks)):
-      task = tasks[i]
+      add = True
+      project_pass = True
+      context_pass = True
+      
+      if project_filter:
+        project_pass = False
+        if f"+{project_filter}" in tasks[i]:
+          project_pass = True
+      
+      if context_filter:
+        context_pass = False
+        if f"@{context_filter}" in tasks[i]:
+          context_pass = True
+
+      if project_pass and context_pass:
+        filtered.append({"i": i, "task": tasks[i]})
+
+    for j in range(0, len(filtered)):
+      task = filtered[j]["task"]
+      i = filtered[j]["i"]
 
       if task[:2] == 'x ' and not done_header_printed:
         print(header('DONE', bcolors().OKGREEN))
-        done_header_printed = True
+        done_header_printed = True      
 
-      if project_filter:
-        if f'+{project_filter}' in task:
-          print_task(task, i)
-      else:
-        print_task(task, i)
+      print_task(task, i)
 
-# def due(task_num):
+  print()
 
 def header(title, color=bcolors.OKBLUE):
   text = f'{title} [{current_filename}]'
@@ -232,6 +251,7 @@ def main():
 
   # global vars
   global project_filter
+  global context_filter
   
   # sort the files before proceeding
   sort()
@@ -246,6 +266,7 @@ def main():
 
   # add project filters
   project_filter = args.project
+  context_filter = args.context
 
   if args.command == "add":
     add()
