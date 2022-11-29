@@ -18,15 +18,11 @@ todo.py -h
 ```bash
 todo.py ls
 ```
-```
---------------------
-TASK LIST [todo.txt]
---------------------
-```
 
 ### Add Task
 ```bash
 $ todo.py add
+
 > update readme
 --------------------
 TASK LIST [todo.txt]
@@ -36,7 +32,7 @@ TASK LIST [todo.txt]
 
 ### Edit Task
 ```bash
-$ todo ls
+$ todo.py ls
 
 --------------------
 TASK LIST [todo.txt]
@@ -47,7 +43,8 @@ TASK LIST [todo.txt]
 [3]     update readme
 
 
-todo edit 0
+$ todo.py edit 0
+
 --------------------
 EDIT TASK [todo.txt]
 --------------------
@@ -66,7 +63,8 @@ TASK UPDATED [todo.txt]
 
 ### Mark as done
 ```bash
-todo.py do 0
+$ todo.py do 0
+
 -----------------------------
 MARK TASK AS DONE? [todo.txt]
 -----------------------------
@@ -87,6 +85,7 @@ DONE [todo.txt]
 Use `-p` to filter by project, and `-c` to filter by context.
 ```bash
 $ todo.py ls
+
 --------------------
 TASK LIST [todo.txt]
 --------------------
@@ -97,6 +96,7 @@ TASK LIST [todo.txt]
 
 
 $ todo.py ls -p todopy
+
 --------------------
 TASK LIST [todo.txt]
 --------------------
@@ -104,6 +104,7 @@ TASK LIST [todo.txt]
 
 
 $ todo.py ls -c home
+
 --------------------
 TASK LIST [todo.txt]
 --------------------
