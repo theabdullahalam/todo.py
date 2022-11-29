@@ -58,3 +58,29 @@ DONE [todo.txt]
 ---------------
 [0]     x update readme
 ```
+
+### Filters
+Use `-p` to filter by project, and `-c` to filter by context.
+```bash
+$ todo.py ls
+--------------------
+TASK LIST [todo.txt]
+--------------------
+[0]     add information about todotxt format +todopy
+[1]     buy eggs @home
+[2]     buy milk @home
+[3]     update readme
+
+$ todo.py ls -p todopy
+--------------------
+TASK LIST [todo.txt]
+--------------------
+[0]     add information about todotxt format +todopy
+
+$ todo.py ls -c home
+--------------------
+TASK LIST [todo.txt]
+--------------------
+[1]     buy eggs @home
+[2]     buy milk @home
+```
