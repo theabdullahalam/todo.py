@@ -5,3 +5,21 @@ It isn't as exhaustive as the popular [todo.txt-cli,](https://github.com/todotxt
 
 ## Installation
 Clone the project, add the the project folder to your path. Then run `todo.py` from anywhere.
+
+## Usage
+The commands below assume the project is in your `PATH`. If not, the commands will work with just `python todo.py`.
+
+```bash
+# help
+todo.py -h
+```
+
+```bash
+# list tasks
+todo.py ls
+```
+```
+--------------------
+TASK LIST [todo.txt]
+--------------------
+```
