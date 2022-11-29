@@ -112,3 +112,37 @@ TASK LIST [todo.txt]
 [2]     buy milk @home
 ```
 
+### Delete Task
+```bash
+$ todo.py ls
+
+--------------------
+TASK LIST [todo.txt]
+--------------------
+[0]     add information about todo.txt format +todopy
+[1]     buy eggs @home
+[2]     buy milk @home
+[3]     update readme
+
+
+$ todo.py delete 3
+
+------------------------------------------------------
+PERMANENTLY DELETE TASK? (CANNOT BE UNDONE) [todo.txt]
+------------------------------------------------------
+update readme
+y/n: y
+------------------------
+TASK DELETED! [todo.txt]
+------------------------
+
+
+$ todo ls
+
+--------------------
+TASK LIST [todo.txt]
+--------------------
+[0]     add information about todo.txt format +todopy
+[1]     buy eggs @home
+[2]     buy milk @home
+```
