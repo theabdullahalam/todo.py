@@ -29,9 +29,32 @@ TASK LIST [todo.txt]
 todo.py add
 ```
 ```
+# output
 > update readme
 --------------------
 TASK LIST [todo.txt]
 --------------------
 [0]     update readme
+```
+
+### Mark as done
+```bash
+todo.py do 0
+```
+```
+# output
+-----------------------------
+MARK TASK AS DONE? [todo.txt]
+-----------------------------
+[0]     update readme
+
+y/n: y
+
+--------------------
+TASK LIST [todo.txt]
+--------------------
+---------------
+DONE [todo.txt]
+---------------
+[0]     x update readme
 ```
