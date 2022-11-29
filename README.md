@@ -26,10 +26,7 @@ TASK LIST [todo.txt]
 
 ### Add Task
 ```bash
-todo.py add
-```
-```
-# output
+$ todo.py add
 > update readme
 --------------------
 TASK LIST [todo.txt]
@@ -37,12 +34,39 @@ TASK LIST [todo.txt]
 [0]     update readme
 ```
 
+### Edit Task
+```bash
+$ todo ls
+
+--------------------
+TASK LIST [todo.txt]
+--------------------
+[0]     add information about todotxt format +todopy
+[1]     buy eggs @home
+[2]     buy milk @home
+[3]     update readme
+
+
+todo edit 0
+--------------------
+EDIT TASK [todo.txt]
+--------------------
+From: add information about todotxt format +todopy
+To:   add information about todo.txt format +todopy
+--------------------------
+CONFIRM UPDATE? [todo.txt]
+--------------------------
+From: add information about todotxt format +todopy
+To:   add information about todo.txt format +todopy
+y/n:  y
+-----------------------
+TASK UPDATED [todo.txt]
+-----------------------
+```
+
 ### Mark as done
 ```bash
 todo.py do 0
-```
-```
-# output
 -----------------------------
 MARK TASK AS DONE? [todo.txt]
 -----------------------------
@@ -71,11 +95,13 @@ TASK LIST [todo.txt]
 [2]     buy milk @home
 [3]     update readme
 
+
 $ todo.py ls -p todopy
 --------------------
 TASK LIST [todo.txt]
 --------------------
 [0]     add information about todotxt format +todopy
+
 
 $ todo.py ls -c home
 --------------------
@@ -84,3 +110,4 @@ TASK LIST [todo.txt]
 [1]     buy eggs @home
 [2]     buy milk @home
 ```
+
