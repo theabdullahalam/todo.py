@@ -9,17 +9,29 @@ Clone the project, add the the project folder to your path. Then run `todo.py` f
 ## Usage
 The commands below assume the project is in your `PATH`. If not, the commands will work with just `python todo.py`.
 
+### Help
 ```bash
-# help
 todo.py -h
 ```
 
+### List Tasks
 ```bash
-# list tasks
 todo.py ls
 ```
 ```
 --------------------
 TASK LIST [todo.txt]
 --------------------
+```
+
+### Add Task
+```bash
+todo.py add
+```
+```
+> update readme
+--------------------
+TASK LIST [todo.txt]
+--------------------
+[0]     update readme
 ```
